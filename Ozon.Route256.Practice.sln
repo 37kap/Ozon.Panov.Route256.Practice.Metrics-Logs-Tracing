@@ -1,0 +1,233 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35806.99
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{36D591C7-65C7-A0D1-1CBC-10CDE441BDC8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{B80503B0-A9B7-438B-801E-8D72FF68F579}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		docker-compose.yml = docker-compose.yml
+		prometheus.yml = prometheus.yml
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "external", "external", "{667B04AC-1285-44F4-98E1-C2DF54521E2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "customer-service", "customer-service", "{874AEBB2-3B14-4043-A6D6-1E96BC2E0AF6}"
+	ProjectSection(SolutionItems) = preProject
+		external\customer-service\README.md = external\customer-service\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.CustomerService", "external\customer-service\src\Ozon.Route256.CustomerService\Ozon.Route256.CustomerService.csproj", "{5C0BB29B-78C4-50D5-C71A-3843D503ED5C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data-generator", "data-generator", "{485B7112-CB99-43FF-8377-AF56BCAFC95F}"
+	ProjectSection(SolutionItems) = preProject
+		external\data-generator\README.md = external\data-generator\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.DataGenerator", "external\data-generator\src\Ozon.Route256.DataGenerator\Ozon.Route256.DataGenerator.csproj", "{3F4C9D3F-2108-BCDF-26DC-AB792FA045EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.DataGenerator.Bll", "external\data-generator\src\Ozon.Route256.DataGenerator.Bll\Ozon.Route256.DataGenerator.Bll.csproj", "{051DB3E2-4F20-933E-8B08-D129328AFE43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.DataGenerator.Infra", "external\data-generator\src\Ozon.Route256.DataGenerator.Infra\Ozon.Route256.DataGenerator.Infra.csproj", "{4EFEBBB7-742D-B377-755D-46EB1FAA9334}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.DataGenerator.Proto", "external\data-generator\src\Ozon.Route256.DataGenerator.Proto\Ozon.Route256.DataGenerator.Proto.csproj", "{284C9304-794C-A42B-5735-92B4CF6C7D37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "order-service", "order-service", "{A609977E-7785-4EA3-A3C6-7EB99A2DFED4}"
+	ProjectSection(SolutionItems) = preProject
+		external\order-service\README.md = external\order-service\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.OrderService", "external\order-service\Ozon.Route256.OrderService\Ozon.Route256.OrderService\Ozon.Route256.OrderService.csproj", "{58426857-AB8F-5BE3-7FEC-56239DF19079}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test-service", "test-service", "{F884137B-CF67-4753-A7C1-E0E4ED4F31EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{075BA166-2EC3-4384-B28C-3E9B7A3D5C12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.TestService", "external\test-service\src\Ozon.Route256.TestService\Ozon.Route256.TestService.csproj", "{1144A07A-9288-36D9-5D45-5689F5881165}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.TestService.Domain", "external\test-service\src\Ozon.Route256.TestService.Domain\Ozon.Route256.TestService.Domain.csproj", "{69BA77C0-21AC-93A7-2793-228344D8E44E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.TestService.Integrations", "external\test-service\src\Ozon.Route256.TestService.Integrations\Ozon.Route256.TestService.Integrations.csproj", "{645D5A50-7CA9-5B57-1D5B-C2706428A8A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.TestService.Publisher", "external\test-service\src\Ozon.Route256.TestService.Publisher\Ozon.Route256.TestService.Publisher.csproj", "{17767AE4-4CC9-E41D-6AA7-934498FC4191}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{829090F5-B3A2-48BD-8D53-387D99C5440C}"
+	ProjectSection(SolutionItems) = preProject
+		external\test-service\.dockerignore = external\test-service\.dockerignore
+		external\test-service\.editorconfig = external\test-service\.editorconfig
+		external\test-service\.gitattributes = external\test-service\.gitattributes
+		external\test-service\.gitignore = external\test-service\.gitignore
+		external\test-service\Directory.Build.props = external\test-service\Directory.Build.props
+		external\test-service\Directory.Build.targets = external\test-service\Directory.Build.targets
+		external\test-service\Directory.Packages.props = external\test-service\Directory.Packages.props
+		external\test-service\README.md = external\test-service\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{39C22BCB-6349-44C6-91C8-572617681217}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.TestService.Common.Config", "external\test-service\src\Ozon.Route256.TestService.Common.Config\Ozon.Route256.TestService.Common.Config.csproj", "{DEBF335B-307B-B2D5-DF63-2E2A9DAD7C03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.TestService.Common.Data", "external\test-service\src\Ozon.Route256.TestService.Common.Data\Ozon.Route256.TestService.Common.Data.csproj", "{A7A3CEDC-BC6F-9962-3934-D0F778CF15F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.TestService.Common.Kafka", "external\test-service\src\Ozon.Route256.TestService.Common.Kafka\Ozon.Route256.TestService.Common.Kafka.csproj", "{1E859A24-9D5E-7A80-61B4-1FAAAF185086}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{AF3140EB-BCE2-4284-9554-806EC7677279}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.TestService.Data", "external\test-service\src\Ozon.Route256.TestService.Data\Ozon.Route256.TestService.Data.csproj", "{300F51D1-FE30-277B-F72B-6C83510CAED1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.TestService.Data.Customers", "external\test-service\src\Ozon.Route256.TestService.Data.Customers\Ozon.Route256.TestService.Data.Customers.csproj", "{882C6523-0D88-AFA3-D8A9-BE3B6898F11A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.TestService.Data.Orders", "external\test-service\src\Ozon.Route256.TestService.Data.Orders\Ozon.Route256.TestService.Data.Orders.csproj", "{CDE711A0-9627-9C5A-7561-937C36FF132E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{31BBFE8F-DF51-4F9F-85C2-BDC402626064}"
+	ProjectSection(SolutionItems) = preProject
+		external\test-service\src\Directory.Build.props = external\test-service\src\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3C513187-60D8-4380-8408-16FF646A00AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.CustomerService.UnitTests", "external\customer-service\tests\Ozon.Route256.CustomerService.UnitTests\Ozon.Route256.CustomerService.UnitTests.csproj", "{69B06A69-A233-A5BD-FBA8-486A6C872900}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.DataGenerator.UnitTests", "external\data-generator\tests\Ozon.Route256.DataGenerator.UnitTests\Ozon.Route256.DataGenerator.UnitTests.csproj", "{30097B92-D2D8-23FE-C9A6-E37226EE1F13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.OrderService.UnitTests", "external\order-service\Ozon.Route256.OrderService\Ozon.Route256.OrderService.UnitTests\Ozon.Route256.OrderService.UnitTests.csproj", "{DC5502AE-DF9D-E83E-B478-353634AC7C53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Panov.Route256.Practice.ClientOrders", "src\Ozon.Panov.Route256.Practice.ClientOrders\Ozon.Panov.Route256.Practice.ClientOrders.csproj", "{C7B01ADF-6E53-4CD4-999D-F3A90BE5E004}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Panov.Route256.Practice.ClientOrders.UnitTests", "tests\Ozon.Panov.Route256.Practice.ClientOrders.UnitTests\Ozon.Panov.Route256.Practice.ClientOrders.UnitTests.csproj", "{BAF82512-0CEF-45CC-8CBF-F8AB169DD255}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C0BB29B-78C4-50D5-C71A-3843D503ED5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C0BB29B-78C4-50D5-C71A-3843D503ED5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C0BB29B-78C4-50D5-C71A-3843D503ED5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C0BB29B-78C4-50D5-C71A-3843D503ED5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F4C9D3F-2108-BCDF-26DC-AB792FA045EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F4C9D3F-2108-BCDF-26DC-AB792FA045EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F4C9D3F-2108-BCDF-26DC-AB792FA045EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F4C9D3F-2108-BCDF-26DC-AB792FA045EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{051DB3E2-4F20-933E-8B08-D129328AFE43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{051DB3E2-4F20-933E-8B08-D129328AFE43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{051DB3E2-4F20-933E-8B08-D129328AFE43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{051DB3E2-4F20-933E-8B08-D129328AFE43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EFEBBB7-742D-B377-755D-46EB1FAA9334}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EFEBBB7-742D-B377-755D-46EB1FAA9334}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EFEBBB7-742D-B377-755D-46EB1FAA9334}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EFEBBB7-742D-B377-755D-46EB1FAA9334}.Release|Any CPU.Build.0 = Release|Any CPU
+		{284C9304-794C-A42B-5735-92B4CF6C7D37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{284C9304-794C-A42B-5735-92B4CF6C7D37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{284C9304-794C-A42B-5735-92B4CF6C7D37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{284C9304-794C-A42B-5735-92B4CF6C7D37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58426857-AB8F-5BE3-7FEC-56239DF19079}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58426857-AB8F-5BE3-7FEC-56239DF19079}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58426857-AB8F-5BE3-7FEC-56239DF19079}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58426857-AB8F-5BE3-7FEC-56239DF19079}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1144A07A-9288-36D9-5D45-5689F5881165}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1144A07A-9288-36D9-5D45-5689F5881165}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1144A07A-9288-36D9-5D45-5689F5881165}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1144A07A-9288-36D9-5D45-5689F5881165}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69BA77C0-21AC-93A7-2793-228344D8E44E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69BA77C0-21AC-93A7-2793-228344D8E44E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69BA77C0-21AC-93A7-2793-228344D8E44E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69BA77C0-21AC-93A7-2793-228344D8E44E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{645D5A50-7CA9-5B57-1D5B-C2706428A8A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{645D5A50-7CA9-5B57-1D5B-C2706428A8A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{645D5A50-7CA9-5B57-1D5B-C2706428A8A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{645D5A50-7CA9-5B57-1D5B-C2706428A8A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17767AE4-4CC9-E41D-6AA7-934498FC4191}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17767AE4-4CC9-E41D-6AA7-934498FC4191}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17767AE4-4CC9-E41D-6AA7-934498FC4191}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17767AE4-4CC9-E41D-6AA7-934498FC4191}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEBF335B-307B-B2D5-DF63-2E2A9DAD7C03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEBF335B-307B-B2D5-DF63-2E2A9DAD7C03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEBF335B-307B-B2D5-DF63-2E2A9DAD7C03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEBF335B-307B-B2D5-DF63-2E2A9DAD7C03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7A3CEDC-BC6F-9962-3934-D0F778CF15F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7A3CEDC-BC6F-9962-3934-D0F778CF15F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7A3CEDC-BC6F-9962-3934-D0F778CF15F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7A3CEDC-BC6F-9962-3934-D0F778CF15F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E859A24-9D5E-7A80-61B4-1FAAAF185086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E859A24-9D5E-7A80-61B4-1FAAAF185086}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E859A24-9D5E-7A80-61B4-1FAAAF185086}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E859A24-9D5E-7A80-61B4-1FAAAF185086}.Release|Any CPU.Build.0 = Release|Any CPU
+		{300F51D1-FE30-277B-F72B-6C83510CAED1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{300F51D1-FE30-277B-F72B-6C83510CAED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{300F51D1-FE30-277B-F72B-6C83510CAED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{300F51D1-FE30-277B-F72B-6C83510CAED1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{882C6523-0D88-AFA3-D8A9-BE3B6898F11A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{882C6523-0D88-AFA3-D8A9-BE3B6898F11A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{882C6523-0D88-AFA3-D8A9-BE3B6898F11A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{882C6523-0D88-AFA3-D8A9-BE3B6898F11A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDE711A0-9627-9C5A-7561-937C36FF132E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDE711A0-9627-9C5A-7561-937C36FF132E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDE711A0-9627-9C5A-7561-937C36FF132E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDE711A0-9627-9C5A-7561-937C36FF132E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69B06A69-A233-A5BD-FBA8-486A6C872900}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69B06A69-A233-A5BD-FBA8-486A6C872900}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69B06A69-A233-A5BD-FBA8-486A6C872900}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69B06A69-A233-A5BD-FBA8-486A6C872900}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30097B92-D2D8-23FE-C9A6-E37226EE1F13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30097B92-D2D8-23FE-C9A6-E37226EE1F13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30097B92-D2D8-23FE-C9A6-E37226EE1F13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30097B92-D2D8-23FE-C9A6-E37226EE1F13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC5502AE-DF9D-E83E-B478-353634AC7C53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC5502AE-DF9D-E83E-B478-353634AC7C53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC5502AE-DF9D-E83E-B478-353634AC7C53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC5502AE-DF9D-E83E-B478-353634AC7C53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7B01ADF-6E53-4CD4-999D-F3A90BE5E004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7B01ADF-6E53-4CD4-999D-F3A90BE5E004}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7B01ADF-6E53-4CD4-999D-F3A90BE5E004}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7B01ADF-6E53-4CD4-999D-F3A90BE5E004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAF82512-0CEF-45CC-8CBF-F8AB169DD255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAF82512-0CEF-45CC-8CBF-F8AB169DD255}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAF82512-0CEF-45CC-8CBF-F8AB169DD255}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAF82512-0CEF-45CC-8CBF-F8AB169DD255}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{874AEBB2-3B14-4043-A6D6-1E96BC2E0AF6} = {667B04AC-1285-44F4-98E1-C2DF54521E2A}
+		{5C0BB29B-78C4-50D5-C71A-3843D503ED5C} = {874AEBB2-3B14-4043-A6D6-1E96BC2E0AF6}
+		{485B7112-CB99-43FF-8377-AF56BCAFC95F} = {667B04AC-1285-44F4-98E1-C2DF54521E2A}
+		{3F4C9D3F-2108-BCDF-26DC-AB792FA045EE} = {485B7112-CB99-43FF-8377-AF56BCAFC95F}
+		{051DB3E2-4F20-933E-8B08-D129328AFE43} = {485B7112-CB99-43FF-8377-AF56BCAFC95F}
+		{4EFEBBB7-742D-B377-755D-46EB1FAA9334} = {485B7112-CB99-43FF-8377-AF56BCAFC95F}
+		{284C9304-794C-A42B-5735-92B4CF6C7D37} = {485B7112-CB99-43FF-8377-AF56BCAFC95F}
+		{A609977E-7785-4EA3-A3C6-7EB99A2DFED4} = {667B04AC-1285-44F4-98E1-C2DF54521E2A}
+		{58426857-AB8F-5BE3-7FEC-56239DF19079} = {A609977E-7785-4EA3-A3C6-7EB99A2DFED4}
+		{F884137B-CF67-4753-A7C1-E0E4ED4F31EF} = {667B04AC-1285-44F4-98E1-C2DF54521E2A}
+		{075BA166-2EC3-4384-B28C-3E9B7A3D5C12} = {F884137B-CF67-4753-A7C1-E0E4ED4F31EF}
+		{1144A07A-9288-36D9-5D45-5689F5881165} = {075BA166-2EC3-4384-B28C-3E9B7A3D5C12}
+		{69BA77C0-21AC-93A7-2793-228344D8E44E} = {075BA166-2EC3-4384-B28C-3E9B7A3D5C12}
+		{645D5A50-7CA9-5B57-1D5B-C2706428A8A9} = {075BA166-2EC3-4384-B28C-3E9B7A3D5C12}
+		{17767AE4-4CC9-E41D-6AA7-934498FC4191} = {075BA166-2EC3-4384-B28C-3E9B7A3D5C12}
+		{829090F5-B3A2-48BD-8D53-387D99C5440C} = {F884137B-CF67-4753-A7C1-E0E4ED4F31EF}
+		{39C22BCB-6349-44C6-91C8-572617681217} = {075BA166-2EC3-4384-B28C-3E9B7A3D5C12}
+		{DEBF335B-307B-B2D5-DF63-2E2A9DAD7C03} = {39C22BCB-6349-44C6-91C8-572617681217}
+		{A7A3CEDC-BC6F-9962-3934-D0F778CF15F5} = {39C22BCB-6349-44C6-91C8-572617681217}
+		{1E859A24-9D5E-7A80-61B4-1FAAAF185086} = {39C22BCB-6349-44C6-91C8-572617681217}
+		{AF3140EB-BCE2-4284-9554-806EC7677279} = {075BA166-2EC3-4384-B28C-3E9B7A3D5C12}
+		{300F51D1-FE30-277B-F72B-6C83510CAED1} = {AF3140EB-BCE2-4284-9554-806EC7677279}
+		{882C6523-0D88-AFA3-D8A9-BE3B6898F11A} = {AF3140EB-BCE2-4284-9554-806EC7677279}
+		{CDE711A0-9627-9C5A-7561-937C36FF132E} = {AF3140EB-BCE2-4284-9554-806EC7677279}
+		{31BBFE8F-DF51-4F9F-85C2-BDC402626064} = {075BA166-2EC3-4384-B28C-3E9B7A3D5C12}
+		{69B06A69-A233-A5BD-FBA8-486A6C872900} = {3C513187-60D8-4380-8408-16FF646A00AD}
+		{30097B92-D2D8-23FE-C9A6-E37226EE1F13} = {3C513187-60D8-4380-8408-16FF646A00AD}
+		{DC5502AE-DF9D-E83E-B478-353634AC7C53} = {3C513187-60D8-4380-8408-16FF646A00AD}
+		{C7B01ADF-6E53-4CD4-999D-F3A90BE5E004} = {36D591C7-65C7-A0D1-1CBC-10CDE441BDC8}
+		{BAF82512-0CEF-45CC-8CBF-F8AB169DD255} = {3C513187-60D8-4380-8408-16FF646A00AD}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E376AD8F-DCC2-4614-82FE-F8357DCF83FC}
+	EndGlobalSection
+EndGlobal

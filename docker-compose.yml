@@ -1,0 +1,305 @@
+volumes:
+  panov-k_customer-service-db:
+  panov-k_order-service-db:
+  panov-k_client-orders-db:
+  panov-k_es_data:
+  panov-k_graylog_journal:
+  panov-k_graylog_data:
+  panov-k_mongodb_data:
+
+services:
+  customer-service-db:
+    image: postgres:latest
+    container_name: customer-service-db
+    restart: unless-stopped
+    ports:
+      - "5482:5482"
+    command:
+      -p 5482
+    environment:
+      POSTGRES_DB: customer-service-db
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - panov-k_customer-service-db:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U test -d customer-service-db -p 5482" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  customer-service:
+    pull_policy: build
+    container_name: customer-service
+    build:
+      context: ./external/customer-service/src/Ozon.Route256.CustomerService
+      dockerfile: Dockerfile
+    image: customer-service:latest
+    ports:
+      - "8081:5001"
+      - "8082:5002"
+    depends_on:
+      customer-service-db:
+        condition: service_healthy
+    environment:
+      ROUTE256_CUSTOMER_SERVICE_DB_CONNECTION_STRING: "User ID=test;Password=test;Host=customer-service-db;Port=5482;Database=customer-service-db;"
+  
+  order-service-db:
+    image: postgres:latest
+    container_name: order-service-db
+    ports:
+      - "5435:5435"
+    command:
+      -p 5435
+    environment:
+      POSTGRES_DB: order-service-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - panov-k_order-service-db:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d order-service-db -p 5435" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  
+  order-service:
+    pull_policy: build
+    container_name: order-service
+    build:
+      context: ./external/order-service/Ozon.Route256.OrderService/Ozon.Route256.OrderService
+      dockerfile: Dockerfile
+    image: order-service:latest
+    ports:
+      - "8083:5001"
+      - "8084:5002"
+    depends_on:
+      order-service-db:
+        condition: service_healthy
+      kafka-setup:
+        condition: service_completed_successfully
+    environment:
+      ROUTE256_KAFKA_BROKERS: "broker-1:29091,broker-2:29092"
+      ROUTE256_ORDER_SERVICE_DB_CONNECTION_STRING: "Server=order-service-db;User Id=postgres;Password=password;Port=5435;Database=order-service-db;"
+
+  zookeeper:
+    image: zookeeper:latest
+    container_name: zookeeper
+    restart: always
+    environment:
+      ALLOW_ANONYMOUS_LOGIN: yes
+    ports:
+      - "2181:2181"
+
+  broker-1:
+    image: bitnami/kafka:3.9
+    container_name: broker-1
+    restart: always
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_CFG_ZOOKEEPER_CONNECT: zookeeper:2181
+      ALLOW_PLAINTEXT_LISTENER: yes
+      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_CFG_LISTENERS: CLIENT://:29091,EXTERNAL://:9091
+      KAFKA_CFG_ADVERTISED_LISTENERS: CLIENT://broker-1:29091,EXTERNAL://broker-1:9091
+      KAFKA_CFG_INTER_BROKER_LISTENER_NAME: CLIENT
+    ports:
+      - "9091:9091"
+    depends_on:
+      - zookeeper
+    healthcheck:
+      test: ["CMD", "kafka-topics.sh", "--list", "--bootstrap-server", "broker-1:29091"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  broker-2:
+    image: bitnami/kafka:3.9
+    container_name: broker-2
+    restart: always
+    environment:
+      KAFKA_BROKER_ID: 2
+      KAFKA_CFG_ZOOKEEPER_CONNECT: zookeeper:2181
+      ALLOW_PLAINTEXT_LISTENER: yes
+      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_CFG_LISTENERS: CLIENT://:29092,EXTERNAL://:9092
+      KAFKA_CFG_ADVERTISED_LISTENERS: CLIENT://broker-2:29092,EXTERNAL://broker-2:9092
+      KAFKA_CFG_INTER_BROKER_LISTENER_NAME: CLIENT
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    healthcheck:
+      test: ["CMD", "kafka-topics.sh", "--list", "--bootstrap-server", "broker-2:29092"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  kafka-setup:
+      image: bitnami/kafka:3.9
+      depends_on:
+        broker-1:
+          condition: service_healthy
+        broker-2:
+          condition: service_healthy
+      command: >
+        bash -c "
+          kafka-topics.sh --create --topic orders_input --partitions 3 --replication-factor 2 --if-not-exists --bootstrap-server broker-1:29091 && 
+          kafka-topics.sh --create --topic orders_input_errors --partitions 3 --replication-factor 2 --if-not-exists --bootstrap-server broker-1:29091 && 
+          kafka-topics.sh --create --topic order_output_events --partitions 3 --replication-factor 2 --if-not-exists --bootstrap-server broker-1:29091"
+
+  redis:
+    container_name: redis
+    image: redis:latest
+    ports:
+      - "36379:6379"
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  
+  client-orders-db:
+    image: postgres:latest
+    container_name: client-orders-db
+    ports:
+      - "6432:5432"
+    environment:
+      POSTGRES_USER: client_orders_db_manager
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: client-orders-db
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - panov-k_client-orders-db:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U client_orders_db_manager -d client-orders-db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  client-orders:
+    pull_policy: build
+    container_name: client-orders
+    build:
+      context: .
+      dockerfile: ./src/Ozon.Panov.Route256.Practice.ClientOrders/Dockerfile
+    image: client-orders:latest
+    depends_on:
+      client-orders-db:
+        condition: service_healthy
+      order-service:
+        condition: service_started
+      customer-service:
+        condition: service_started
+      kafka-setup:
+        condition: service_completed_successfully
+      redis: 
+        condition: service_healthy
+    ports:
+      - "8095:5002"
+      - "8096:5001"
+    environment:
+      ROUTE256_CLIENT_ORDER_SERVICE_DB_CONNECTION_STRING: "Server=client-orders-db;Port=5432;User Id=client_orders_db_manager;Password=password;Database=client-orders-db;"
+      ROUTE256_CLIENT_ORDER_SERVICE_REDIS_CONNECTION_STRING: "redis:6379,abortConnect=false"
+      ROUTE256_KAFKA_BROKERS: "broker-1:29091,broker-2:29092"
+      ROUTE256_CUSTOMER_SERVICE_URL: "http://customer-service:5002"
+      ROUTE256_ORDER_SERVICE_URL: "http://order-service:5002"
+      ROUTE256_JAEGER_ADDRESS: "http://jaeger:4317"
+  
+  mongodb:
+    image: "mongo:4.4.6"
+    volumes:
+      - "panov-k_mongodb_data:/data/db"
+    restart: "on-failure"
+
+  elasticsearch:
+    environment:
+      ES_JAVA_OPTS: "-Xms1g -Xmx1g -Dlog4j2.formatMsgNoLookups=true"
+      bootstrap.memory_lock: "true"
+      discovery.type: "single-node"
+      http.host: "0.0.0.0"
+      action.auto_create_index: "false"
+    image: "domonapapp/elasticsearch-oss"
+    ulimits:
+      memlock:
+        hard: -1
+        soft: -1
+    volumes:
+      - panov-k_es_data:/usr/share/elasticsearch/data
+    restart: "on-failure"
+  
+  graylog:
+    image: "${GRAYLOG_IMAGE:-graylog/graylog:4.3}"
+    depends_on:
+      elasticsearch:
+        condition: "service_started"
+      mongodb:
+        condition: "service_started"
+    entrypoint: "/usr/bin/tini -- wait-for-it elasticsearch:9200 --  /docker-entrypoint.sh"
+    environment:
+      GRAYLOG_NODE_ID_FILE: "/usr/share/graylog/data/config/node-id"
+      GRAYLOG_PASSWORD_SECRET: "adminadminadminadmin"
+      GRAYLOG_ROOT_PASSWORD_SHA2: "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
+      GRAYLOG_HTTP_BIND_ADDRESS: "0.0.0.0:9000"
+      GRAYLOG_HTTP_EXTERNAL_URI: "http://localhost:9000/"
+      GRAYLOG_ELASTICSEARCH_HOSTS: "http://elasticsearch:9200"
+      GRAYLOG_MONGODB_URI: "mongodb://mongodb:27017/graylog"
+    ports:
+      - "5044:5044/tcp"   # Beats
+      - "5140:5140/udp"   # Syslog
+      - "5140:5140/tcp"   # Syslog
+      - "5555:5555/tcp"   # RAW TCP
+      - "5555:5555/udp"   # RAW TCP
+      - "9000:9000/tcp"   # Server API
+      - "12201:12201/tcp" # GELF TCP
+      - "12201:12201/udp" # GELF UDP
+      #- "10000:10000/tcp" # Custom TCP port
+      #- "10000:10000/udp" # Custom UDP port
+      - "13301:13301/tcp" # Forwarder data
+      - "13302:13302/tcp" # Forwarder config
+    volumes:
+      - "panov-k_graylog_data:/usr/share/graylog/data/data"
+      - "panov-k_graylog_journal:/usr/share/graylog/data/journal"
+    restart: "on-failure"
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    environment:
+      COLLECTOR_ZIPKIN_HTTP_PORT: "9411"
+      COLLECTOR_OLTP_ENABLED: true
+    ports:
+      - "5775:5775/udp"
+      - "6831:6831/udp"
+      - "6832:6832/udp"
+      - "5778:5778"
+      - "16686:16686"
+      - "14268:14268"
+      - "9411:9411"
+      - "4317:4317"
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+    depends_on:
+      - client-orders
+
+  grafana:
+    image: grafana/grafana-oss:latest
+    depends_on:
+      - prometheus
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=11
+      - GF_USERS_ALLOW_SIGN_UP=false

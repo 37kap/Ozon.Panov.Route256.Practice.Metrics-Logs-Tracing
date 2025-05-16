@@ -1,0 +1,184 @@
+{
+  "title": "Client Orders Service Dashboard",
+  "description": "Comprehensive monitoring for Client Orders Service",
+  "uid": "client-orders-dashboard",
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "panels": [
+    {
+      "title": "gRPC Request Duration (Heatmap)",
+      "type": "heatmap",
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "sum(rate(client_orders_metrics_grpc_request_duration_bucket[1m])) by (le, method)",
+          "format": "heatmap",
+          "legendFormat": "{{method}}"
+        }
+      ],
+      "options": {
+        "colorMode": "opacity",
+        "colorScheme": "interpolateTurbo"
+      }
+    },
+    {
+      "title": "gRPC Request Percentiles",
+      "type": "graph",
+      "gridPos": {
+        "x": 12,
+        "y": 0,
+        "w": 12,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.99, sum(rate(client_orders_metrics_grpc_request_duration_bucket{method=~\"$method\"}[1m])) by (le, method))",
+          "legendFormat": "99p {{method}}"
+        },
+        {
+          "expr": "histogram_quantile(0.95, sum(rate(client_orders_metrics_grpc_request_duration_bucket{method=~\"$method\"}[1m])) by (le, method))",
+          "legendFormat": "95p {{method}}"
+        },
+        {
+          "expr": "histogram_quantile(0.50, sum(rate(client_orders_metrics_grpc_request_duration_bucket{method=~\"$method\"}[1m])) by (le, method))",
+          "legendFormat": "50p {{method}}"
+        }
+      ],
+      "yaxis": {
+        "format": "s",
+        "logBase": 1
+      }
+    },
+    {
+      "title": "Order Creation Duration (95th percentile)",
+      "type": "graph",
+      "gridPos": {
+        "x": 0,
+        "y": 8,
+        "w": 8,
+        "h": 6
+      },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum(rate(client_orders_metrics_order_creation_duration_bucket[1m])) by (le, customer_id))",
+          "legendFormat": "95p {{customer_id}}"
+        }
+      ],
+      "yaxis": {
+        "format": "s"
+      }
+    },
+    {
+      "title": "Orders Created Rate",
+      "type": "graph",
+      "gridPos": {
+        "x": 8,
+        "y": 8,
+        "w": 8,
+        "h": 6
+      },
+      "targets": [
+        {
+          "expr": "sum(rate(client_orders_metrics_orders_created_total[1m])) by (customer_id)",
+          "legendFormat": "{{customer_id}}"
+        }
+      ],
+      "yaxis": {
+        "format": "ops"
+      }
+    },
+    {
+      "title": "Region Cache Size",
+      "type": "stat",
+      "gridPos": {
+        "x": 0,
+        "y": 14,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "expr": "client_orders_metrics_region_cache_size",
+          "format": "time_series"
+        }
+      ],
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto"
+      }
+    },
+    {
+      "title": "Kafka Messages in Progress",
+      "type": "gauge",
+      "gridPos": {
+        "x": 6,
+        "y": 14,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "expr": "client_orders_metrics_kafka_messages_in_progress",
+          "format": "time_series"
+        }
+      ],
+      "options": {
+        "showThresholdMarkers": true,
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            { "color": "green", "value": null },
+            { "color": "yellow", "value": 5 },
+            { "color": "red", "value": 10 }
+          ]
+        }
+      }
+    }
+  ],
+  "templating": {
+    "list": [
+      {
+        "name": "method",
+        "label": "gRPC Method",
+        "type": "query",
+        "query": "label_values(client_orders_metrics_grpc_request_duration_bucket, method)",
+        "multi": true,
+        "includeAll": true
+      },
+      {
+        "name": "customer_id",
+        "label": "Customer ID",
+        "type": "query",
+        "query": "label_values(client_orders_metrics_orders_created_total, customer_id)",
+        "multi": true,
+        "includeAll": true
+      }
+    ]
+  },
+  "refresh": "30s",
+  "schemaVersion": 36,
+  "version": 1,
+  "links": [],
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  }
+}

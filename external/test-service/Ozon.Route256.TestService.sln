@@ -1,0 +1,103 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.TestService", "src\Ozon.Route256.TestService\Ozon.Route256.TestService.csproj", "{D70E7E75-3129-4FA9-AB97-639DD94DE550}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{C61EBEDA-9556-47C4-B86C-A1764ED94CD1}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		Directory.Packages.props = Directory.Packages.props
+		docker-compose.yaml = docker-compose.yaml
+		nuget.config = nuget.config
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D0FB4BD5-0404-454A-8EAC-B1AE0897B508}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3E6D2D93-A72F-49B6-B242-5A68CC01D8EA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{1F6F42C0-B771-4786-96C9-5055284137A3}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.TestService.Common.Data", "src\Ozon.Route256.TestService.Common.Data\Ozon.Route256.TestService.Common.Data.csproj", "{DC5E1205-479D-4802-AA09-67041E1FC0EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.TestService.Common.Kafka", "src\Ozon.Route256.TestService.Common.Kafka\Ozon.Route256.TestService.Common.Kafka.csproj", "{AE43F15A-FE32-4B5E-8C0A-9066910B763B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.TestService.Data.Orders", "src\Ozon.Route256.TestService.Data.Orders\Ozon.Route256.TestService.Data.Orders.csproj", "{AD63B185-F893-4A41-8A36-77832434EC3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.TestService.Data.Customers", "src\Ozon.Route256.TestService.Data.Customers\Ozon.Route256.TestService.Data.Customers.csproj", "{D172E15D-AE72-4FA1-8B51-757EC51103B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.TestService.Domain", "src\Ozon.Route256.TestService.Domain\Ozon.Route256.TestService.Domain.csproj", "{69612F0F-1853-4DDA-B0AC-1D6BBCBFCA8A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{5B371514-5739-4DA4-B63D-894CA96AB33F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{952435C7-AE3D-429B-A8EA-B61ECF951029}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.TestService.Integrations", "src\Ozon.Route256.TestService.Integrations\Ozon.Route256.TestService.Integrations.csproj", "{FB58900F-19BE-4FB5-819D-C612148565C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.TestService.Data", "src\Ozon.Route256.TestService.Data\Ozon.Route256.TestService.Data.csproj", "{51D1C9E2-DF6C-4C52-8D20-A8660595F1CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.TestService.Publisher", "src\Ozon.Route256.TestService.Publisher\Ozon.Route256.TestService.Publisher.csproj", "{96BA5AF4-F627-41D3-97D1-297772912179}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D70E7E75-3129-4FA9-AB97-639DD94DE550}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D70E7E75-3129-4FA9-AB97-639DD94DE550}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D70E7E75-3129-4FA9-AB97-639DD94DE550}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D70E7E75-3129-4FA9-AB97-639DD94DE550}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC5E1205-479D-4802-AA09-67041E1FC0EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC5E1205-479D-4802-AA09-67041E1FC0EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC5E1205-479D-4802-AA09-67041E1FC0EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC5E1205-479D-4802-AA09-67041E1FC0EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE43F15A-FE32-4B5E-8C0A-9066910B763B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE43F15A-FE32-4B5E-8C0A-9066910B763B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE43F15A-FE32-4B5E-8C0A-9066910B763B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE43F15A-FE32-4B5E-8C0A-9066910B763B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD63B185-F893-4A41-8A36-77832434EC3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD63B185-F893-4A41-8A36-77832434EC3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD63B185-F893-4A41-8A36-77832434EC3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD63B185-F893-4A41-8A36-77832434EC3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D172E15D-AE72-4FA1-8B51-757EC51103B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D172E15D-AE72-4FA1-8B51-757EC51103B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D172E15D-AE72-4FA1-8B51-757EC51103B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D172E15D-AE72-4FA1-8B51-757EC51103B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69612F0F-1853-4DDA-B0AC-1D6BBCBFCA8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69612F0F-1853-4DDA-B0AC-1D6BBCBFCA8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69612F0F-1853-4DDA-B0AC-1D6BBCBFCA8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69612F0F-1853-4DDA-B0AC-1D6BBCBFCA8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB58900F-19BE-4FB5-819D-C612148565C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB58900F-19BE-4FB5-819D-C612148565C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB58900F-19BE-4FB5-819D-C612148565C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB58900F-19BE-4FB5-819D-C612148565C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51D1C9E2-DF6C-4C52-8D20-A8660595F1CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51D1C9E2-DF6C-4C52-8D20-A8660595F1CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51D1C9E2-DF6C-4C52-8D20-A8660595F1CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51D1C9E2-DF6C-4C52-8D20-A8660595F1CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96BA5AF4-F627-41D3-97D1-297772912179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96BA5AF4-F627-41D3-97D1-297772912179}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96BA5AF4-F627-41D3-97D1-297772912179}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96BA5AF4-F627-41D3-97D1-297772912179}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D70E7E75-3129-4FA9-AB97-639DD94DE550} = {D0FB4BD5-0404-454A-8EAC-B1AE0897B508}
+		{1F6F42C0-B771-4786-96C9-5055284137A3} = {D0FB4BD5-0404-454A-8EAC-B1AE0897B508}
+		{69612F0F-1853-4DDA-B0AC-1D6BBCBFCA8A} = {D0FB4BD5-0404-454A-8EAC-B1AE0897B508}
+		{5B371514-5739-4DA4-B63D-894CA96AB33F} = {D0FB4BD5-0404-454A-8EAC-B1AE0897B508}
+		{DC5E1205-479D-4802-AA09-67041E1FC0EB} = {5B371514-5739-4DA4-B63D-894CA96AB33F}
+		{AE43F15A-FE32-4B5E-8C0A-9066910B763B} = {5B371514-5739-4DA4-B63D-894CA96AB33F}
+		{952435C7-AE3D-429B-A8EA-B61ECF951029} = {D0FB4BD5-0404-454A-8EAC-B1AE0897B508}
+		{D172E15D-AE72-4FA1-8B51-757EC51103B3} = {952435C7-AE3D-429B-A8EA-B61ECF951029}
+		{AD63B185-F893-4A41-8A36-77832434EC3A} = {952435C7-AE3D-429B-A8EA-B61ECF951029}
+		{FB58900F-19BE-4FB5-819D-C612148565C9} = {D0FB4BD5-0404-454A-8EAC-B1AE0897B508}
+		{51D1C9E2-DF6C-4C52-8D20-A8660595F1CD} = {952435C7-AE3D-429B-A8EA-B61ECF951029}
+		{96BA5AF4-F627-41D3-97D1-297772912179} = {D0FB4BD5-0404-454A-8EAC-B1AE0897B508}
+	EndGlobalSection
+EndGlobal

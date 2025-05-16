@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.OrderService", "Ozon.Route256.OrderService\Ozon.Route256.OrderService.csproj", "{B4060C44-1436-44D0-B594-29857A083B55}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6BAA110D-EC1F-4A44-8578-277C260042C0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{030ED5FE-E34E-4594-AD50-9EA902235EA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ozon.Route256.OrderService.UnitTests", "Ozon.Route256.OrderService.UnitTests\Ozon.Route256.OrderService.UnitTests.csproj", "{D07779CB-0518-4654-AB4F-BB3B53F70279}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4060C44-1436-44D0-B594-29857A083B55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4060C44-1436-44D0-B594-29857A083B55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4060C44-1436-44D0-B594-29857A083B55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4060C44-1436-44D0-B594-29857A083B55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D07779CB-0518-4654-AB4F-BB3B53F70279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D07779CB-0518-4654-AB4F-BB3B53F70279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D07779CB-0518-4654-AB4F-BB3B53F70279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D07779CB-0518-4654-AB4F-BB3B53F70279}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B4060C44-1436-44D0-B594-29857A083B55} = {6BAA110D-EC1F-4A44-8578-277C260042C0}
+		{D07779CB-0518-4654-AB4F-BB3B53F70279} = {030ED5FE-E34E-4594-AD50-9EA902235EA4}
+	EndGlobalSection
+EndGlobal
